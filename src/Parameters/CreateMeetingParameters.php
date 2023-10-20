@@ -176,10 +176,11 @@ class CreateMeetingParameters extends MetaParameters
      */
     private ?bool $lockSettingsHideViewersCursor = null;
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @var bool
      */
-    private ?bool $allowModsToUnmuteUsers = null;
+//    private ?bool $allowModsToUnmuteUsers = null;
 
     /**
      * @var bool
@@ -211,10 +212,11 @@ class CreateMeetingParameters extends MetaParameters
      */
     private ?bool $freeJoin = null;
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @var string
      */
-    private ?string $guestPolicy = null;
+//    private ?string $guestPolicy = null;
 
     /**
      * @var string
@@ -1093,25 +1095,31 @@ class CreateMeetingParameters extends MetaParameters
         return $this;
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @return null|bool
      */
+    /*
     public function isAllowModsToUnmuteUsers()
     {
         return $this->allowModsToUnmuteUsers;
     }
+    */
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @param bool $allowModsToUnmuteUsers
      *
      * @return CreateMeetingParameters
      */
+    /*
     public function setAllowModsToUnmuteUsers($allowModsToUnmuteUsers)
     {
         $this->allowModsToUnmuteUsers = $allowModsToUnmuteUsers;
 
         return $this;
     }
+    */
 
     public function isAllowModsToEjectCameras(): bool
     {
@@ -1137,17 +1145,20 @@ class CreateMeetingParameters extends MetaParameters
         return $this;
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @param mixed $recordingReadyCallbackUrl
      *
      * @return CreateMeetingParameters
      */
+    /*
     public function setRecordingReadyCallbackUrl($recordingReadyCallbackUrl)
     {
         $this->addMeta('bbb-recording-ready-url', $recordingReadyCallbackUrl);
 
         return $this;
     }
+    */
 
     /**
      * @return null|bool
@@ -1229,25 +1240,31 @@ class CreateMeetingParameters extends MetaParameters
         return $this;
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @return string
      */
+    /*
     public function getGuestPolicy()
     {
         return $this->guestPolicy;
     }
+    */
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @param bool $guestPolicy
      *
      * @return CreateMeetingParameters
      */
+    /*
     public function setGuestPolicy($guestPolicy)
     {
         $this->guestPolicy = $guestPolicy;
 
         return $this;
     }
+    */
 
     /**
      * @deprecated
@@ -1524,8 +1541,10 @@ class CreateMeetingParameters extends MetaParameters
             'webcamsOnlyForModerator'                => !is_null($this->webcamsOnlyForModerator) ? ($this->webcamsOnlyForModerator ? 'true' : 'false') : $this->webcamsOnlyForModerator,
             'logo'                                   => $this->logo,
             'copyright'                              => $this->copyright,
-            'muteOnStart'                            => !is_null($this->muteOnStart) ? ($this->muteOnStart ? 'true' : 'false') : $this->muteOnStart,
-            'guestPolicy'                            => $this->guestPolicy,
+            //            Vloom Project BBB-LB edited by Edward Pham
+            'muteOnStart'                            => $this->muteOnStart,
+//            'guestPolicy'                            => $this->guestPolicy,
+
             'lockSettingsDisableCam'                 => !is_null($this->lockSettingsDisableCam) ? ($this->lockSettingsDisableCam ? 'true' : 'false') : $this->lockSettingsDisableCam,
             'lockSettingsDisableMic'                 => !is_null($this->lockSettingsDisableMic) ? ($this->lockSettingsDisableMic ? 'true' : 'false') : $this->lockSettingsDisableMic,
             'lockSettingsDisablePrivateChat'         => !is_null($this->lockSettingsDisablePrivateChat) ? ($this->lockSettingsDisablePrivateChat ? 'true' : 'false') : $this->lockSettingsDisablePrivateChat,
@@ -1536,7 +1555,10 @@ class CreateMeetingParameters extends MetaParameters
             'lockSettingsLockOnJoin'                 => !is_null($this->lockSettingsLockOnJoin) ? ($this->lockSettingsLockOnJoin ? 'true' : 'false') : $this->lockSettingsLockOnJoin,
             'lockSettingsLockOnJoinConfigurable'     => !is_null($this->lockSettingsLockOnJoinConfigurable) ? ($this->lockSettingsLockOnJoinConfigurable ? 'true' : 'false') : $this->lockSettingsLockOnJoinConfigurable,
             'lockSettingsHideViewersCursor'          => !is_null($this->lockSettingsHideViewersCursor) ? ($this->lockSettingsHideViewersCursor ? 'true' : 'false') : $this->lockSettingsHideViewersCursor,
-            'allowModsToUnmuteUsers'                 => !is_null($this->allowModsToUnmuteUsers) ? ($this->allowModsToUnmuteUsers ? 'true' : 'false') : $this->allowModsToUnmuteUsers,
+
+            //            Vloom Project BBB-LB edited by Edward Pham
+//            'allowModsToUnmuteUsers'                 => !is_null($this->allowModsToUnmuteUsers) ? ($this->allowModsToUnmuteUsers ? 'true' : 'false') : $this->allowModsToUnmuteUsers,
+
             'allowModsToEjectCameras'                => !is_null($this->allowModsToEjectCameras) ? ($this->allowModsToEjectCameras ? 'true' : 'false') : $this->allowModsToEjectCameras,
             'bannerText'                             => trim($this->bannerText),
             'bannerColor'                            => trim($this->bannerColor),

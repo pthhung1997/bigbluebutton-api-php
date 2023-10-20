@@ -37,7 +37,7 @@ final class ApiMethod
     public const UPDATE_RECORDINGS         = 'updateRecordings';
     public const GET_RECORDING_TEXT_TRACKS = 'getRecordingTextTracks';
     public const PUT_RECORDING_TEXT_TRACK  = 'putRecordingTextTrack';
-    public const HOOKS_CREATE              = 'hooks/create';
-    public const HOOKS_LIST                = 'hooks/list';
-    public const HOOKS_DESTROY             = 'hooks/destroy';
+//    public const HOOKS_CREATE              = 'hooks/create';
+//    public const HOOKS_LIST                = 'hooks/list';
+//    public const HOOKS_DESTROY             = 'hooks/destroy';
 }

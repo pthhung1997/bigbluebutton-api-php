@@ -74,10 +74,11 @@ class JoinMeetingParameters extends UserDataParameters
      */
     private ?string $clientURL = null;
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @var array
      */
-    private $customParameters;
+//    private $customParameters;
 
     /**
      * @var string
@@ -120,7 +121,7 @@ class JoinMeetingParameters extends UserDataParameters
         } else {
             $this->password = $passworOrRole;
         }
-        $this->customParameters = [];
+//        $this->customParameters = [];
     }
 
     /**
@@ -403,18 +404,21 @@ class JoinMeetingParameters extends UserDataParameters
         return $this;
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @param string $paramName
      * @param string $paramValue
      *
      * @return JoinMeetingParameters
      */
+    /*
     public function setCustomParameter($paramName, $paramValue)
     {
         $this->customParameters[$paramName] = $paramValue;
 
         return $this;
     }
+    */
 
     /**
      * @return string
@@ -437,11 +441,12 @@ class JoinMeetingParameters extends UserDataParameters
             'guest'                => !is_null($this->guest) ? ($this->guest ? 'true' : 'false') : $this->guest,
             'defaultLayout'        => $this->defaultLayout,
         ];
-        
 
-        foreach ($this->customParameters as $key => $value) {
-            $queries[$key] = $value;
-        }
+
+        //            Vloom Project BBB-LB edited by Edward Pham
+//        foreach ($this->customParameters as $key => $value) {
+//            $queries[$key] = $value;
+//        }
 
         $this->buildUserData($queries);
 

@@ -57,10 +57,11 @@ class Attendee
      */
     private $hasVideo;
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @var array
      */
-    private $customData = [];
+    private $customData;
 
     /**
      * @var string
@@ -83,11 +84,12 @@ class Attendee
         $this->hasVideo        = 'true' === $xml->hasVideo->__toString();
         $this->clientType      = $xml->clientType->__toString();
 
-        if ($xml->customdata) {
+//            Vloom Project BBB-LB edited by Edward Pham
+//        if ($xml->customdata) {
             foreach ($xml->customdata->children() as $data) {
                 $this->customData[$data->getName()] = $data->__toString();
             }
-        }
+//        }
     }
 
     /**

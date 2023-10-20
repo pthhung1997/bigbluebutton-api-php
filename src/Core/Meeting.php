@@ -150,10 +150,11 @@ class Meeting
      */
     private $metas;
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * @var bool
      */
-    private $isBreakout;
+//    private $isBreakout;
 
     /**
      * Meeting constructor.
@@ -185,7 +186,8 @@ class Meeting
         $this->endTime               = (float) $xml->endTime;
         $this->maxUsers              = (int) $xml->maxUsers->__toString();
         $this->moderatorCount        = (int) $xml->moderatorCount->__toString();
-        $this->isBreakout            = 'true' === $xml->isBreakout->__toString();
+        //            Vloom Project BBB-LB edited by Edward Pham
+//        $this->isBreakout            = 'true' === $xml->isBreakout->__toString();
     }
 
     /**
@@ -379,11 +381,13 @@ class Meeting
         return $this->attendees;
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     /**
      * Moderators of Meeting - Subset of Attendees.
      *
      * @return Attendee[]
      */
+    /*
     public function getModerators()
     {
         $attendees = $this->getAttendees();
@@ -394,12 +398,14 @@ class Meeting
 
         return array_values($moderators);
     }
+    */
 
     /**
      * Viewers of Meeting - Subset of Attendees.
      *
      * @return Attendee[]
      */
+    /*
     public function getViewers()
     {
         $attendees = $this->getAttendees();
@@ -410,6 +416,7 @@ class Meeting
 
         return array_values($viewers);
     }
+    */
 
     /**
      * @return array
@@ -426,8 +433,10 @@ class Meeting
         return $this->metas;
     }
 
+    /*
     public function isBreakout(): bool
     {
         return $this->isBreakout;
     }
+    */
 }

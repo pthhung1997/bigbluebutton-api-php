@@ -89,6 +89,16 @@ class BigBlueButton
         $this->curlopts         = $opts['curl'] ?? [];
     }
 
+    public function setBBBServerInfo($bbbServerBaseUrl, $securitySecret, $hashingAlgorithm = HashingAlgorithm::SHA_256)
+    {
+        // Keeping backward compatibility with older deployed versions
+        $this->securitySecret   = $securitySecret;
+        $this->bbbServerBaseUrl = $bbbServerBaseUrl;
+        $this->hashingAlgorithm = $hashingAlgorithm;
+        $this->urlBuilder       = new UrlBuilder($this->securitySecret, $this->bbbServerBaseUrl, $this->hashingAlgorithm);
+        $this->curlopts         = $opts['curl'] ?? [];
+    }
+
     public function setHashingAlgorithm(string $hashingAlgorithm): void
     {
         $this->hashingAlgorithm = $hashingAlgorithm;
@@ -426,69 +436,81 @@ class BigBlueButton
         return new PutRecordingTextTrackResponse($json);
     }
 
+    //            Vloom Project BBB-LB edited by Edward Pham
     // ____________________ WEB HOOKS METHODS ___________________
-
     /**
      * @param $hookCreateParams HooksCreateParameters
      *
      * @return string
      */
+    /*
     public function getHooksCreateUrl($hookCreateParams)
     {
         return $this->urlBuilder->buildUrl(ApiMethod::HOOKS_CREATE, $hookCreateParams->getHTTPQuery());
     }
+    */
 
     /**
      * @param mixed $hookCreateParams
      *
      * @return HooksCreateResponse
      */
+    /*
     public function hooksCreate($hookCreateParams)
     {
         $xml = $this->processXmlResponse($this->getHooksCreateUrl($hookCreateParams));
 
         return new HooksCreateResponse($xml);
     }
+     */
 
     /**
      * @return string
      */
+    /*
     public function getHooksListUrl()
     {
         return $this->urlBuilder->buildUrl(ApiMethod::HOOKS_LIST);
     }
+     */
 
     /**
      * @return HooksListResponse
      */
+    /*
     public function hooksList()
     {
         $xml = $this->processXmlResponse($this->getHooksListUrl());
 
         return new HooksListResponse($xml);
     }
+     */
 
     /**
      * @param $hooksDestroyParams HooksDestroyParameters
      *
      * @return string
      */
+    /*
     public function getHooksDestroyUrl($hooksDestroyParams)
     {
         return $this->urlBuilder->buildUrl(ApiMethod::HOOKS_DESTROY, $hooksDestroyParams->getHTTPQuery());
     }
+     */
 
     /**
      * @param mixed $hooksDestroyParams
      *
      * @return HooksDestroyResponse
      */
+    /*
     public function hooksDestroy($hooksDestroyParams)
     {
         $xml = $this->processXmlResponse($this->getHooksDestroyUrl($hooksDestroyParams));
 
         return new HooksDestroyResponse($xml);
     }
+     */
 
     // ____________________ SPECIAL METHODS ___________________
     /**
@@ -575,7 +597,10 @@ class BigBlueButton
             curl_setopt($ch, CURLOPT_ENCODING, 'UTF-8');
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+//            Vloom Project BBB-LB edited by Edward Pham
+//            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeOut);
             curl_setopt($ch, CURLOPT_COOKIEFILE, $cookiefilepath);
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookiefilepath);
@@ -593,10 +618,12 @@ class BigBlueButton
             if (false === $data) {
                 throw new \RuntimeException('Unhandled curl error: ' . curl_error($ch));
             }
-            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            if ($httpcode < 200 || $httpcode >= 300) {
-                throw new BadResponseException('Bad response, HTTP code: ' . $httpcode);
-            }
+//            Vloom Project BBB-LB edited by Edward Pham
+//            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//            if ($httpcode < 200 || $httpcode >= 300) {
+//                throw new BadResponseException('Bad response, HTTP code: ' . $httpcode);
+//            }
+
             curl_close($ch);
             unset($ch);
 
